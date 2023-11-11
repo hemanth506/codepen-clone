@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Code Editor</title>
+</head>
+
+<body>
+  <header>
+    <p>Codepen - Online editor</p>
+  </header>
+  <main>
+    <!-- <iframe src="https://kanban-board-green-one.vercel.app/"></iframe> -->
+
+    <section id="container-editor" class="container">
+      <section>
+        <p class="title" id="html">HTML</p>
+        <textarea name="html-code" id="html-editor"></textarea>
+      </section>
+      <section>
+        <p class="title" id="css">CSS</p>
+        <textarea name="css-code" id="css-editor"></textarea>
+      </section>
+      <section>
+        <p class="title" id="javascript">Javascript</p>
+        <textarea name="javascript-code" id="js-editor"></textarea>
+      </section>
+    </section>
+
+    <iframe id="ui-viewer"></iframe>
+
+  </main>
+</body>
+<script src="script.js"></script>
+
+</html>
