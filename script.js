@@ -30,7 +30,7 @@ const jsMirror = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
 });
 
 containerEditor.addEventListener("keyup", (e) => {
-  console.log("hoop");
+  // console.log("hoop");
 
   const htmlCode = htmlMirror.getValue();
   const cssCode = cssMirror.getValue();
