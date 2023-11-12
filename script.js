@@ -1,6 +1,10 @@
 const containerEditor = document.getElementById("container-editor");
 const resizeDiv = document.getElementById("main-resize-div");
 const iFrameElement = document.getElementById("ui-viewer");
+const headViewBtn = document.querySelector(".btn-img");
+const changeViewBtn = document.querySelectorAll(".option-view-btn");
+const viewDiv = document.querySelector(".view-outer-div");
+const headImg = document.getElementById("head-img");
 
 const htmlMirror = CodeMirror.fromTextArea(
   document.getElementById("html-editor"),
@@ -29,9 +33,7 @@ const jsMirror = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
   mode: "xml",
 });
 
-containerEditor.addEventListener("keyup", (e) => {
-  // console.log("hoop");
-
+containerEditor.addEventListener("keyup", () => {
   const htmlCode = htmlMirror.getValue();
   const cssCode = cssMirror.getValue();
   const jsCode = jsMirror.getValue();
@@ -57,3 +59,34 @@ window.onresize = () => {
 };
 
 init();
+
+const toggleDiv = () => {
+  
+  const classList = viewDiv.classList;
+  if (classList.contains("view-active")) {
+    viewDiv.classList.remove("view-active");
+  } else {
+    viewDiv.classList.add("view-active");
+  }
+};
+
+headViewBtn.addEventListener("click", () => {
+  toggleDiv();
+});
+
+const removeActiveClass = () => {
+  changeViewBtn.forEach((elt) => {
+    elt.classList.remove("isactive");
+  })
+}
+
+changeViewBtn.forEach((elt) => {
+  elt.addEventListener("click", (e) => {
+    removeActiveClass();
+    const closestDiv = e.target.closest("div");
+    const rotateClassName = closestDiv.getAttribute("imgPosition");
+    headImg.classList = [];
+    headImg.classList.add(`${rotateClassName}`);
+    elt.classList.add("isactive")
+  });
+})
