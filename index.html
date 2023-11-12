@@ -5,34 +5,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.63.0/lib/codemirror.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+  <!-- <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material-palenight.min.css"
+    integrity="sha512-uIAyXysSwPKYTS4BrBQGkt7i9ozdNjNA4jXfjFDl6fWIc2zDllleoiY5EkH7Ib2j+Qb8YJx4a5qy192JZqxqVg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.63.0/lib/codemirror.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.63.0/mode/javascript/javascript.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/htmlmixed/htmlmixed.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="assets/code-icon-3.ico">
   <title>Codepen</title>
 </head>
 
 <body>
-  <header>
-    <p>Codepen - Online editor</p>
-  </header>
-  <main>
-    <!-- <iframe src="https://kanban-board-green-one.vercel.app/"></iframe> -->
+  <div class="header-div">
+    <section class="header">
+      <div id="head-title-div">
+        <img src="assets/code-icon-3.png">
+        <div class="title-div">
+          <p id="head-title">Codepen</p>
+          <p id="description">Online Code Editor</p>
+        </div>
+      </div>
+      <div class="btns-div">
+        <button class="header-btn">Save</button>
+        <button class="header-btn">Settings</button>
+        <button class="header-btn btn-img"><img src="assets/grid.png" alt="grid" class="grid-img"></button>
+        <button class="header-btn sign-up">Sign Up</button>
+        <button class="header-btn">Log In</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="main">
 
     <section id="container-editor" class="container">
-      <section>
-        <p class="title" id="html">HTML</p>
-        <textarea name="html-code" id="html-editor" placeholder="Write HTML code here"></textarea>
+      <div class="resize-div"></div>
+
+      <section class="editor">
+        <div class="title-container">
+          <div class="title">
+            <div class="title-icon" id="html-icon">/</div>
+            <p class="title-para" id="html">HTML</p>
+          </div>
+        </div>
+        <textarea name="html-code" id="html-editor" class="textArea-editor"></textarea>
       </section>
-      <section>
-        <p class="title" id="css">CSS</p>
-        <textarea name="css-code" id="css-editor" placeholder="Write CSS code here"></textarea>
+
+      <div class="resize-div"></div>
+
+      <section class="editor">
+        <div class="title-container">
+          <div class="title">
+            <div class="title-icon" id="css-icon">*</div>
+            <p class="title-para" id="css">CSS</p>
+          </div>
+        </div>
+        <textarea name="css-code" id="css-editor" class="textArea-editor"></textarea>
       </section>
-      <section>
-        <p class="title" id="javascript">Javascript</p>
-        <textarea name="javascript-code" id="js-editor" placeholder="Write JS code here"></textarea>
+
+      <div class="resize-div"></div>
+
+      <section class="editor">
+        <div class="title-container">
+          <div class="title">
+            <div class="title-icon" id="js-icon">( )</div>
+            <p class="title-para" id="javascript">JS</p>
+          </div>
+        </div>
+        <textarea name="javascript-code" id="js-editor" class="textArea-editor"></textarea>
       </section>
+
     </section>
+
+    <div id="main-resize-div"></div>
 
     <iframe id="ui-viewer"></iframe>
 
-  </main>
+  </div>
+
 </body>
 <script src="script.js"></script>
 
