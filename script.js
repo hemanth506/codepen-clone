@@ -5,7 +5,7 @@ const headViewBtn = document.querySelector(".btn-img");
 const changeViewBtn = document.querySelectorAll(".option-view-btn");
 const viewDiv = document.querySelector(".view-outer-div");
 const headImg = document.getElementById("head-img");
-
+const wipButtons = document.querySelectorAll(".header-btn");
 const iFrameWidth = "100%";
 const iFrameheight = "100%";
 
@@ -96,3 +96,10 @@ changeViewBtn.forEach((elt) => {
     elt.classList.add("isactive");
   });
 });
+
+wipButtons.forEach((elt)=> {
+
+  elt.addEventListener("click", () => {
+    alert ("Work in progress")
+  })
+})

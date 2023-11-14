@@ -39,7 +39,7 @@ svg {
 .view-outer-div {
   position: absolute;
   z-index: 99;
-  width: 21.5%;
+  padding: 0px 20px;
   height: 105px;
   right: 180px;
   background-color: var(--background-color);
@@ -74,7 +74,7 @@ svg {
 
 #view-options {
   display: flex;
-  width: 80%;
+  /* width: 80%; */
   justify-items: center;
   background-color: var(--head-background);
   align-content: center;
@@ -193,7 +193,7 @@ svg {
 .editor {
   border-left: 1px solid;
   border-right: 1px solid;
-  width: 100%;
+  width: 33%;
   display: grid;
   grid-template-rows: 1fr 9fr;
 }
@@ -231,7 +231,7 @@ textarea {
 }
 
 .resize-div {
-  width: 35px;
+  width: 13px;
   cursor: col-resize;
 }
 
