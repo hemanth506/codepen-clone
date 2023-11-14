@@ -61,7 +61,6 @@ window.onresize = () => {
 init();
 
 const toggleDiv = () => {
-  
   const classList = viewDiv.classList;
   if (classList.contains("view-active")) {
     viewDiv.classList.remove("view-active");
@@ -77,16 +76,17 @@ headViewBtn.addEventListener("click", () => {
 const removeActiveClass = () => {
   changeViewBtn.forEach((elt) => {
     elt.classList.remove("isactive");
-  })
-}
+  });
+};
 
 changeViewBtn.forEach((elt) => {
   elt.addEventListener("click", (e) => {
     removeActiveClass();
     const closestDiv = e.target.closest("div");
     const rotateClassName = closestDiv.getAttribute("imgPosition");
+    console.log("rotateClassName", rotateClassName);
     headImg.classList = [];
     headImg.classList.add(`${rotateClassName}`);
-    elt.classList.add("isactive")
+    elt.classList.add("isactive");
   });
-})
+});
