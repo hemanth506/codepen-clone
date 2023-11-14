@@ -6,6 +6,9 @@ const changeViewBtn = document.querySelectorAll(".option-view-btn");
 const viewDiv = document.querySelector(".view-outer-div");
 const headImg = document.getElementById("head-img");
 
+const iFrameWidth = "100%";
+const iFrameheight = "100%";
+
 const htmlMirror = CodeMirror.fromTextArea(
   document.getElementById("html-editor"),
   {
@@ -15,6 +18,7 @@ const htmlMirror = CodeMirror.fromTextArea(
     mode: "xml",
   }
 );
+// htmlMirror.setSize(iFrameWidth, iFrameheight);
 
 const cssMirror = CodeMirror.fromTextArea(
   document.getElementById("css-editor"),
@@ -25,6 +29,7 @@ const cssMirror = CodeMirror.fromTextArea(
     mode: "xml",
   }
 );
+// cssMirror.setSize(iFrameWidth, iFrameheight);
 
 const jsMirror = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
   lineNumbers: true,
@@ -32,6 +37,7 @@ const jsMirror = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
   theme: "dracula",
   mode: "xml",
 });
+// jsMirror.setSize(iFrameWidth, iFrameheight);
 
 containerEditor.addEventListener("keyup", () => {
   const htmlCode = htmlMirror.getValue();

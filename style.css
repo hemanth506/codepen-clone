@@ -193,7 +193,7 @@ svg {
 .editor {
   border-left: 1px solid;
   border-right: 1px solid;
-  width: 33%;
+  width: 100%;
   display: grid;
   grid-template-rows: 1fr 9fr;
 }
@@ -231,7 +231,7 @@ textarea {
 }
 
 .resize-div {
-  width: 13px;
+  width: 35px;
   cursor: col-resize;
 }
 
