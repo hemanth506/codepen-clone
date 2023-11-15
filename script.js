@@ -137,11 +137,11 @@ window.onresize = () => {
   let [codeHtml, codecss, codeJs] = getLocalStorage();
   if (!codeHtml && !codecss && !codeJs) {
     codeHtml = `<body>
-    <h1>Welcome to codepen...🎉🎉</h1>
-    </body>`;
+      <h1>Welcome to codepen...🎉🎉</h1>
+  </body>`;
     codecss = `h1 {
       color: tomato;
-    }`;
+}`;
     codeJs = "";
     setLocalStorage(codeHtml, codecss, codeJs);
   }
