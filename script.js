@@ -6,8 +6,11 @@ const changeViewBtn = document.querySelectorAll(".option-view-btn");
 const viewDiv = document.querySelector(".view-outer-div");
 const headImg = document.getElementById("head-img");
 const wipButtons = document.querySelectorAll(".header-btn");
+const outputFrame = document.getElementById("ui-viewer");
+
 const iFrameWidth = "100%";
 const iFrameheight = "100%";
+const DEBOUNCE_TIME = 5000;
 
 const htmlMirror = CodeMirror.fromTextArea(
   document.getElementById("html-editor"),
@@ -39,32 +42,46 @@ const jsMirror = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
 });
 // jsMirror.setSize(iFrameWidth, iFrameheight);
 
-containerEditor.addEventListener("keyup", () => {
-  const htmlCode = htmlMirror.getValue();
-  const cssCode = cssMirror.getValue();
-  const jsCode = jsMirror.getValue();
-  const outputFrame = document.getElementById("ui-viewer");
+const getCodeMirrorValue = () => {
+  return [htmlMirror.getValue(), cssMirror.getValue(), jsMirror.getValue()];
+};
 
+const setLocalStorage = (htmlCode, cssCode, jsCode) => {
+  localStorage.setItem("htmlCode", htmlCode);
+  localStorage.setItem("cssCode", cssCode);
+  localStorage.setItem("jsCode", jsCode);
+};
+
+const getLocalStorage = () => {
+  return [
+    localStorage.getItem("htmlCode"),
+    localStorage.getItem("cssCode"),
+    localStorage.getItem("jsCode"),
+  ];
+};
+
+const appendCodeToIFrame = (htmlCode, cssCode, jsCode) => {
   outputFrame.contentDocument.body.innerHTML = `<style>${cssCode}</style>${htmlCode}`;
   try {
     outputFrame.contentWindow.eval(jsCode);
   } catch (err) {}
+};
+
+let timeId = null;
+const debounce = () => {
+  if (timeId) clearTimeout(timeId);
+  timeId = setTimeout(() => {
+    const [htmlCode, cssCode, jsCode] = getCodeMirrorValue();
+    setLocalStorage(htmlCode, cssCode, jsCode);
+    timeId = null;
+  }, DEBOUNCE_TIME);
+};
+
+containerEditor.addEventListener("keyup", () => {
+  const [htmlCode, cssCode, jsCode] = getCodeMirrorValue();
+  appendCodeToIFrame(htmlCode, cssCode, jsCode);
+  debounce();
 });
-
-// To set the height of the iframe [Temperory work around]
-const init = () => {
-  const rect = resizeDiv.getBoundingClientRect();
-  const bottomOfDiv = rect.bottom;
-  const screenHeight = window.innerHeight;
-  const heightOfIframe = screenHeight - bottomOfDiv - 4;
-  iFrameElement.style.height = `${heightOfIframe}px`;
-};
-
-window.onresize = () => {
-  init();
-};
-
-init();
 
 const toggleDiv = () => {
   const classList = viewDiv.classList;
@@ -97,9 +114,32 @@ changeViewBtn.forEach((elt) => {
   });
 });
 
-wipButtons.forEach((elt)=> {
-
+wipButtons.forEach((elt) => {
   elt.addEventListener("click", () => {
-    alert ("Work in progress")
-  })
-})
+    alert("Work in progress");
+  });
+});
+
+// To set the height of the iframe [Temperory work around]
+const init = () => {
+  const rect = resizeDiv.getBoundingClientRect();
+  const bottomOfDiv = rect.bottom;
+  const screenHeight = window.innerHeight;
+  const heightOfIframe = screenHeight - bottomOfDiv - 4;
+  iFrameElement.style.height = `${heightOfIframe}px`;
+};
+
+window.onresize = () => {
+  init();
+};
+
+(function () {
+  const [codeHtml, codecss, codeJs] = getLocalStorage();
+  htmlMirror.setValue(codeHtml);
+  cssMirror.setValue(codecss);
+  jsMirror.setValue(codeJs);
+
+  appendCodeToIFrame(codeHtml, codecss, codeJs);
+
+  init();
+})();

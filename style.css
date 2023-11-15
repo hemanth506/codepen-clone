@@ -179,6 +179,7 @@ svg {
   font-size: 13px;
 }
 
+/* Main div */
 .main {
   display: flex;
   flex-direction: column;
@@ -220,7 +221,6 @@ textarea {
   width: 38px;
 }
 
-
 .title {
   display: flex;
   align-items: center;
@@ -258,7 +258,6 @@ textarea {
 #html-icon {
   background-color: tomato;
 }
-
 
 #css-icon {
   background-color: rgb(118, 216, 255);
