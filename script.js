@@ -134,7 +134,17 @@ window.onresize = () => {
 };
 
 (function () {
-  const [codeHtml, codecss, codeJs] = getLocalStorage();
+  let [codeHtml, codecss, codeJs] = getLocalStorage();
+  if (!codeHtml && !codecss && !codeJs) {
+    codeHtml = `<body>
+    <h1>Welcome to codepen...🎉🎉</h1>
+    </body>`;
+    codecss = `h1 {
+      color: tomato;
+    }`;
+    codeJs = "";
+    setLocalStorage(codeHtml, codecss, codeJs);
+  }
   htmlMirror.setValue(codeHtml);
   cssMirror.setValue(codecss);
   jsMirror.setValue(codeJs);
